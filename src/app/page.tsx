@@ -92,7 +92,7 @@ const videos = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-fuchsia-500/30">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-fuchsia-500 focus:px-4 focus:py-2 focus:text-white"
@@ -102,99 +102,118 @@ export default function Home() {
 
       <header className="relative overflow-hidden border-b border-fuchsia-500/20">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(217,70,239,0.25),_transparent_50%),radial-gradient(circle_at_80%_20%,_rgba(56,189,248,0.25),_transparent_45%)]" />
-        <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-8 px-6 py-20 md:px-10 md:py-28">
-          <p className="text-sm uppercase tracking-[0.25em] text-cyan-300">Unofficial fan page</p>
-          <h1 className="max-w-3xl text-4xl font-bold leading-tight md:text-6xl">
+        <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-7 px-6 py-18 md:px-10 md:py-24">
+          <p className="text-xs font-medium uppercase tracking-[0.3em] text-cyan-300 md:text-sm">Unofficial fan page</p>
+          <h1 className="max-w-3xl text-balance text-4xl font-bold leading-tight md:text-6xl md:leading-[1.05]">
             Depeche Mode
             <span className="mt-2 block bg-gradient-to-r from-fuchsia-400 to-cyan-300 bg-clip-text text-transparent">
               Echoes in Neon and Shadow
             </span>
           </h1>
-          <p className="max-w-2xl text-lg text-slate-300 md:text-xl">
+          <p className="max-w-2xl text-pretty text-base leading-relaxed text-slate-300 md:text-xl md:leading-relaxed">
             A darkwave-synthwave tribute to one of the most influential electronic bands ever — from Basildon beginnings to their enduring global legacy.
           </p>
         </div>
       </header>
 
-      <main id="main-content" className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-6 py-14 md:px-10">
-        <section aria-labelledby="intro-heading" className="rounded-2xl border border-slate-700/60 bg-slate-900/70 p-6 md:p-8">
-          <h2 id="intro-heading" className="text-3xl font-semibold text-fuchsia-300">
+      <main id="main-content" className="mx-auto flex w-full max-w-6xl flex-col gap-14 px-6 py-12 md:gap-18 md:px-10 md:py-14">
+        <section
+          aria-labelledby="intro-heading"
+          className="rounded-2xl border border-slate-700/60 bg-slate-900/70 p-6 shadow-[0_20px_45px_-35px_rgba(56,189,248,0.55)] transition-colors motion-safe:duration-300 hover:border-fuchsia-400/30 md:p-8"
+        >
+          <h2 id="intro-heading" className="text-2xl font-semibold tracking-tight text-fuchsia-300 md:text-3xl">
             Band Intro
           </h2>
-          <p className="mt-4 leading-8 text-slate-200">
+          <p className="mt-4 max-w-prose leading-8 text-slate-200">
             Depeche Mode emerged from the UK new-wave movement and redefined what electronic music could feel like: intimate, cinematic, and deeply human. Their catalogue balances machine-driven rhythm with emotional weight, shaping the sound of generations.
           </p>
         </section>
 
-        <section aria-labelledby="timeline-heading">
-          <h2 id="timeline-heading" className="text-3xl font-semibold text-cyan-300">
+        <section aria-labelledby="timeline-heading" className="space-y-6">
+          <h2 id="timeline-heading" className="text-2xl font-semibold tracking-tight text-cyan-300 md:text-3xl">
             Timeline: Formation to Present
           </h2>
-          <ol className="mt-6 space-y-4 border-l border-fuchsia-500/40 pl-6">
-            {timeline.map((item) => (
-              <li key={item.year} className="relative rounded-lg bg-slate-900/60 p-4">
-                <span className="absolute -left-[1.95rem] top-6 h-3 w-3 rounded-full bg-fuchsia-400" aria-hidden />
+          <ol className="space-y-4 border-l border-fuchsia-500/40 pl-6">
+            {timeline.map((item, index) => (
+              <li
+                key={item.year}
+                className="group relative rounded-lg border border-transparent bg-slate-900/60 p-4 transition-transform transition-colors motion-safe:duration-300 motion-safe:hover:-translate-y-0.5 hover:border-fuchsia-400/20"
+                style={{ transitionDelay: `${index * 20}ms` }}
+              >
+                <span className="absolute -left-[1.95rem] top-6 h-3 w-3 rounded-full bg-fuchsia-400 shadow-[0_0_0_6px_rgba(15,23,42,1)]" aria-hidden />
                 <p className="text-sm font-semibold uppercase tracking-wide text-fuchsia-300">{item.year}</p>
-                <h3 className="mt-1 text-xl font-semibold">{item.title}</h3>
+                <h3 className="mt-1 text-lg font-semibold text-slate-100 md:text-xl">{item.title}</h3>
                 <p className="mt-2 text-slate-300">{item.description}</p>
               </li>
             ))}
           </ol>
         </section>
 
-        <section aria-labelledby="highlights-heading" className="grid gap-5 md:grid-cols-2">
+        <section aria-labelledby="highlights-heading" className="grid gap-5 md:grid-cols-2 md:items-start">
           <div>
-            <h2 id="highlights-heading" className="text-3xl font-semibold text-fuchsia-300">
+            <h2 id="highlights-heading" className="text-2xl font-semibold tracking-tight text-fuchsia-300 md:text-3xl">
               Highlights
             </h2>
-            <p className="mt-3 text-slate-300">Key reasons Depeche Mode remains essential listening across eras.</p>
+            <p className="mt-3 max-w-prose text-slate-300">Key reasons Depeche Mode remains essential listening across eras.</p>
           </div>
           <ul className="space-y-3">
             {highlights.map((point) => (
-              <li key={point} className="rounded-lg border border-cyan-500/30 bg-slate-900/70 p-4 text-slate-200">
+              <li
+                key={point}
+                className="rounded-lg border border-cyan-500/30 bg-slate-900/70 p-4 text-slate-200 transition-colors motion-safe:duration-300 hover:border-cyan-300/55"
+              >
                 {point}
               </li>
             ))}
           </ul>
         </section>
 
-        <section aria-labelledby="gallery-heading">
-          <h2 id="gallery-heading" className="text-3xl font-semibold text-cyan-300">
+        <section aria-labelledby="gallery-heading" className="space-y-6">
+          <h2 id="gallery-heading" className="text-2xl font-semibold tracking-tight text-cyan-300 md:text-3xl">
             Curated Image Gallery
           </h2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {gallery.map((image) => (
-              <figure key={image.src} className="overflow-hidden rounded-xl border border-slate-700/60 bg-slate-900">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {gallery.map((image, index) => (
+              <figure
+                key={image.src}
+                className="group overflow-hidden rounded-xl border border-slate-700/60 bg-slate-900/85 shadow-[0_20px_45px_-36px_rgba(217,70,239,0.55)] transition-all motion-safe:duration-300 hover:-translate-y-0.5 hover:border-fuchsia-300/45 focus-within:border-cyan-300/55"
+              >
                 <Image
                   src={image.src}
                   alt={image.alt}
                   width={900}
                   height={600}
-                  className="h-56 w-full object-cover transition duration-500 hover:scale-105"
+                  sizes="(min-width: 1024px) 48vw, (min-width: 640px) 50vw, 100vw"
+                  priority={index === 0}
+                  className="h-56 w-full object-cover transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-105"
                 />
-                <figcaption className="p-3 text-sm text-slate-300">{image.alt}</figcaption>
+                <figcaption className="p-3 text-sm leading-relaxed text-slate-300">{image.alt}</figcaption>
               </figure>
             ))}
           </div>
         </section>
 
-        <section aria-labelledby="video-heading" className="rounded-2xl border border-fuchsia-500/30 bg-slate-900/70 p-6 md:p-8">
-          <h2 id="video-heading" className="text-3xl font-semibold text-fuchsia-300">
+        <section aria-labelledby="video-heading" className="space-y-6 rounded-2xl border border-fuchsia-500/30 bg-slate-900/70 p-6 md:p-8">
+          <h2 id="video-heading" className="text-2xl font-semibold tracking-tight text-fuchsia-300 md:text-3xl">
             Live Video Spotlights
           </h2>
-          <p className="mt-3 text-slate-300">Selected performances that capture the band&apos;s atmosphere and live intensity.</p>
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
+          <p className="max-w-prose text-slate-300">Selected performances that capture the band&apos;s atmosphere and live intensity.</p>
+          <div className="grid gap-4 md:grid-cols-2">
             {videos.map((video) => (
-              <figure key={video.embedUrl} className="overflow-hidden rounded-xl border border-slate-700/70 bg-slate-900">
+              <figure
+                key={video.embedUrl}
+                className="group overflow-hidden rounded-xl border border-slate-700/60 bg-slate-900/85 shadow-[0_20px_45px_-36px_rgba(56,189,248,0.55)] transition-all motion-safe:duration-300 hover:-translate-y-0.5 hover:border-cyan-300/45 focus-within:border-cyan-300/55"
+              >
                 <iframe
                   className="aspect-video w-full"
                   src={video.embedUrl}
                   title={video.title}
+                  loading="lazy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
                 />
-                <figcaption className="p-3 text-sm text-slate-300">{video.description}</figcaption>
+                <figcaption className="p-3 text-sm leading-relaxed text-slate-300">{video.description}</figcaption>
               </figure>
             ))}
           </div>
