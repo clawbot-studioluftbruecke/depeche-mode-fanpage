@@ -77,6 +77,19 @@ const gallery = [
   },
 ];
 
+const videos = [
+  {
+    embedUrl: "https://www.youtube.com/embed/aGSKrC7dGcY",
+    title: "Depeche Mode - Enjoy the Silence (Live)",
+    description: "A fan-favorite live rendition with atmospheric stage visuals.",
+  },
+  {
+    embedUrl: "https://www.youtube.com/embed/snILjFUkk_A",
+    title: "Depeche Mode - Personal Jesus (Live)",
+    description: "A powerful performance of one of the band’s defining tracks.",
+  },
+];
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
@@ -167,18 +180,23 @@ export default function Home() {
 
         <section aria-labelledby="video-heading" className="rounded-2xl border border-fuchsia-500/30 bg-slate-900/70 p-6 md:p-8">
           <h2 id="video-heading" className="text-3xl font-semibold text-fuchsia-300">
-            Live Video Spotlight
+            Live Video Spotlights
           </h2>
-          <p className="mt-3 text-slate-300">A classic performance that captures the band&apos;s atmosphere and live intensity.</p>
-          <div className="mt-6 overflow-hidden rounded-xl border border-slate-700/70">
-            <iframe
-              className="aspect-video w-full"
-              src="https://www.youtube.com/embed/aGSKrC7dGcY"
-              title="Depeche Mode - Enjoy the Silence (Live)"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
+          <p className="mt-3 text-slate-300">Selected performances that capture the band&apos;s atmosphere and live intensity.</p>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            {videos.map((video) => (
+              <figure key={video.embedUrl} className="overflow-hidden rounded-xl border border-slate-700/70 bg-slate-900">
+                <iframe
+                  className="aspect-video w-full"
+                  src={video.embedUrl}
+                  title={video.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+                <figcaption className="p-3 text-sm text-slate-300">{video.description}</figcaption>
+              </figure>
+            ))}
           </div>
         </section>
       </main>
